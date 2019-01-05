@@ -1,0 +1,53 @@
+<app-navbar></app-navbar>
+<div class="row" *ngIf="quizService.qns && this.quizService.qnProgress != 14">
+  <div class="col s8 offset-s2">
+    <span>Time Elapsed : {{quizService.displayTimeElapsed()}}</span>
+    <span>Time Elapsed : {{quizService.displayTimeCountDown()}}</span>
+    <div class="progress">
+      <div class="determinate" [style.width.%]="(quizService.qnProgress+1)*7.143"></div>
+    </div>
+    <div class="card blue-grey darken-1">
+      <div class="card-content white-text">
+        <span class="card-title">{{quizService.qnProgress+1}}</span>
+        <p>{{quizService.qns[quizService.qnProgress].question}}</p>
+        <div *ngIf="quizService.qns[quizService.qnProgress].image!=null">
+          <img 
+            class="center" 
+            [src]="quizService.qns[quizService.qnProgress].image"
+            style="width:350px;height:200px"
+          >
+        </div>
+      </div>
+      <div class="card-action">
+        <ul class="collection answer">
+          <ng-container *ngFor="let option of quizService.qns[quizService.qnProgress].options;let i = index">
+            <li *ngIf="option != null" class="collection-item" style="line-height: 2.5rem;">
+              
+              <button (click)="Answer(quizService.qns[quizService.qnProgress].id,i)"
+                      class="btn-floating btn-small waves-effect waves-light green"
+                      style="float: right;margin: 0px;"
+              >
+                <i class="material-icons">check</i>
+              </button>
+        
+              <div *ngIf="option.type==0">
+                {{option.Option}}
+              </div>
+              <div *ngIf="option.type==1">
+                <img 
+                  class="center" 
+                  [src]="quizService.imagesUrl+option.Option"
+                  style="width:170px;height:170px"
+                >
+              </div>
+              <div *ngIf="option.type==2">
+                {{option.Option}} it's vedio
+              </div>
+            </li>
+          </ng-container>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
