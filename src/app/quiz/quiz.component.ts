@@ -9,7 +9,7 @@ import { QuizService } from '../shared/quiz.service';
 })
 export class QuizComponent implements OnInit {
 
-  constructor(private router: Router, private quizService: QuizService) { }
+  constructor(private router: Router, public quizService: QuizService) { }
 
   ngOnInit() {
     if (parseInt(localStorage.getItem('seconds')) > 0) {
