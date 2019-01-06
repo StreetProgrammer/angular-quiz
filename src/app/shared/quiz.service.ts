@@ -4,8 +4,8 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class QuizService {
   // ---------------- Properties---------------
-  readonly rootUrl = 'http://localhost:8000/api/';
-  readonly imagesUrl = 'http://127.0.0.1:8000/storage/answers/';
+  readonly rootUrl = 'http://backup.sports-mate.net/api/';
+  readonly imagesUrl = 'http://backup.sports-mate.net/storage/answers/';
   qns: any[];
   seconds: number;
   countDownSeconds: number = 60 ;
