@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 export class QuizService {
   // ---------------- Properties---------------
   readonly rootUrl = 'http://backup.sports-mate.net/api/';
-  readonly imagesUrl = 'http://backup.sports-mate.net/storage/answers/';
+  readonly imagesUrl = 'http://backup.sports-mate.net/api/storage/answers/';
   qns: any[];
   seconds: number;
   countDownSeconds: number = 60 ;
