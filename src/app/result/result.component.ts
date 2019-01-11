@@ -14,7 +14,7 @@ export class ResultComponent implements OnInit {
   constructor(public quizService: QuizService, private router: Router) { }
 
   ngOnInit() {
-    if (parseInt(localStorage.getItem('qnProgress')) == 14) {
+    if (parseInt(localStorage.getItem('qnProgress')) == 45) {
       this.quizService.seconds = parseInt(localStorage.getItem('seconds'));
       this.quizService.qnProgress = parseInt(localStorage.getItem('qnProgress'));
       this.quizService.qns = JSON.parse(localStorage.getItem('qns'));
@@ -58,7 +58,7 @@ export class ResultComponent implements OnInit {
     localStorage.setItem('qns', "");
     localStorage.setItem('seconds', "0");
     this.router.navigate(['/quiz']);
-    this.quizService.countDownSeconds = 60 ;
+    this.quizService.countDownSeconds = 600 ;
   }
 
 }

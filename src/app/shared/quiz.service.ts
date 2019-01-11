@@ -5,10 +5,10 @@ import { HttpClient } from '@angular/common/http';
 export class QuizService {
   // ---------------- Properties---------------
   readonly rootUrl = 'https://backup.sports-mate.net/api/';
-  readonly imagesUrl = 'https://backup.sports-mate.net/api/storage/answers/';
+  readonly imagesUrl = 'https://backup.sports-mate.net/storage/answers/';
   qns: any[];
   seconds: number;
-  countDownSeconds: number = 60 ;
+  countDownSeconds: number = 600 ;
   timer;
   qnProgress: number;
   correctAnswerCount: number = 0;

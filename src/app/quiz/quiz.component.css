@@ -5,3 +5,13 @@
 .green:hover{
     background-color: #4CAF50 !important;
 }
+
+.arrow:hover{
+    background-color: #ffffff !important;
+    color: #26a69a
+}
+
+.arrow:hover i{
+    background-color: #ffffff !important;
+    color: #26a69a
+}

@@ -16,7 +16,7 @@ export class QuizComponent implements OnInit {
       this.quizService.seconds = parseInt(localStorage.getItem('seconds'));
       this.quizService.qnProgress = parseInt(localStorage.getItem('qnProgress'));
       this.quizService.qns = JSON.parse(localStorage.getItem('qns'));
-      if (this.quizService.qnProgress == 14)
+      if (this.quizService.qnProgress == 45)
         this.router.navigate(['/result']);
       else
         this.startTimer();
@@ -40,6 +40,11 @@ export class QuizComponent implements OnInit {
         alert('time is out') ;
         clearInterval(this.quizService.timer);
         this.router.navigate(['/register']);
+        localStorage.setItem('qnProgress', "0");
+        localStorage.setItem('qns', "");
+        localStorage.setItem('seconds', "0");
+        this.quizService.countDownSeconds = 60;
+        // this.router.navigate(['/quiz']);
       }else{
         this.quizService.countDownSeconds--;
         this.quizService.seconds++;
@@ -55,10 +60,40 @@ export class QuizComponent implements OnInit {
     localStorage.setItem('qns', JSON.stringify(this.quizService.qns));
     this.quizService.qnProgress++;
     localStorage.setItem('qnProgress', this.quizService.qnProgress.toString());
-    if (this.quizService.qnProgress == 14) {
+    if (this.quizService.qnProgress == 45) {
       clearInterval(this.quizService.timer);
       this.router.navigate(['/result']);
     }
+    console.log('localStorage', localStorage.qnProgress);
+    console.log('qns', this.quizService.qns);
+    
+  }
+
+  forward(qID, choice) {
+    console.log('choice', choice);
+    this.quizService.qns[this.quizService.qnProgress].answer = choice;
+    localStorage.setItem('qns', JSON.stringify(this.quizService.qns));
+    this.quizService.qnProgress++;
+    localStorage.setItem('qnProgress', this.quizService.qnProgress.toString());
+    if (this.quizService.qnProgress == 45) {
+      clearInterval(this.quizService.timer);
+      this.router.navigate(['/result']);
+    }
+    console.log('localStorage', localStorage.qnProgress);
+    console.log('qns', this.quizService.qns);
+    
+  }
+
+  back(qID, choice) {
+    console.log('choice', choice);
+    //this.quizService.qns[this.quizService.qnProgress].answer = choice;
+    // localStorage.setItem('qns', JSON.stringify(this.quizService.qns));
+    this.quizService.qnProgress--;
+    /*localStorage.setItem('qnProgress', this.quizService.qnProgress.toString());
+    if (this.quizService.qnProgress == 14) {
+      clearInterval(this.quizService.timer);
+      this.router.navigate(['/result']);
+    }*/
     console.log('localStorage', localStorage.qnProgress);
     console.log('qns', this.quizService.qns);
     

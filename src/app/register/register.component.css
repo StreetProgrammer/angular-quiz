@@ -1,0 +1,7 @@
+.card {
+  position: relative;
+  margin: .5rem 0 1rem 0;
+  background-color: #f1ebebcc;
+  -webkit-transition: -webkit-box-shadow .25s;
+}
+

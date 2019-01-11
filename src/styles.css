@@ -8,6 +8,14 @@ button.btn-submit{
     width: 100%;
 }
 
+body{
+    background: url('../src/assets/img/background.jpg');
+    -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 /*ul.answer li:hover{
     background-color: #26a69a;
     color: #eafaf9;
