@@ -5,3 +5,11 @@
   -webkit-transition: -webkit-box-shadow .25s;
 }
 
+.contain{
+  background: url('../../assets/img/background.jpg');
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100vh;
+}

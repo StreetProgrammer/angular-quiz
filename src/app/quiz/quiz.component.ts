@@ -9,6 +9,8 @@ import { QuizService } from '../shared/quiz.service';
 })
 export class QuizComponent implements OnInit {
 
+  type: number;
+  heading: any ;
   constructor(private router: Router, public quizService: QuizService) { }
 
   ngOnInit() {
@@ -55,7 +57,8 @@ export class QuizComponent implements OnInit {
   }
 
   Answer(qID, choice) {
-    console.log('choice', choice);
+    //console.log('choice', choice);
+    this.changeContent(this.quizService.qns[this.quizService.qnProgress], this.quizService.qns[this.quizService.qnProgress + 1])
     this.quizService.qns[this.quizService.qnProgress].answer = choice;
     localStorage.setItem('qns', JSON.stringify(this.quizService.qns));
     this.quizService.qnProgress++;
@@ -64,13 +67,14 @@ export class QuizComponent implements OnInit {
       clearInterval(this.quizService.timer);
       this.router.navigate(['/result']);
     }
-    console.log('localStorage', localStorage.qnProgress);
-    console.log('qns', this.quizService.qns);
+    //console.log('localStorage', localStorage.qnProgress);
+    //console.log('qns', this.quizService.qns);
     
   }
 
   forward(qID, choice) {
-    console.log('choice', choice);
+    this.changeContent(this.quizService.qns[this.quizService.qnProgress], this.quizService.qns[this.quizService.qnProgress + 1])
+    //console.log('choice', choice);
     this.quizService.qns[this.quizService.qnProgress].answer = choice;
     localStorage.setItem('qns', JSON.stringify(this.quizService.qns));
     this.quizService.qnProgress++;
@@ -79,13 +83,15 @@ export class QuizComponent implements OnInit {
       clearInterval(this.quizService.timer);
       this.router.navigate(['/result']);
     }
-    console.log('localStorage', localStorage.qnProgress);
-    console.log('qns', this.quizService.qns);
+    //console.log('localStorage', localStorage.qnProgress);
+    //console.log('qns', this.quizService.qns);
     
   }
 
   back(qID, choice) {
-    console.log('choice', choice);
+    this.changeContent(this.quizService.qns[this.quizService.qnProgress], this.quizService.qns[this.quizService.qnProgress - 1])
+
+    //console.log('choice', choice);
     //this.quizService.qns[this.quizService.qnProgress].answer = choice;
     // localStorage.setItem('qns', JSON.stringify(this.quizService.qns));
     this.quizService.qnProgress--;
@@ -94,9 +100,26 @@ export class QuizComponent implements OnInit {
       clearInterval(this.quizService.timer);
       this.router.navigate(['/result']);
     }*/
-    console.log('localStorage', localStorage.qnProgress);
-    console.log('qns', this.quizService.qns);
+    //console.log('localStorage', localStorage.qnProgress);
+    //console.log('qns', this.quizService.qns);
     
+  }
+
+  changeContent(question, next) {
+    if (question.id == 1) {
+      console.log('false need to add it');
+      this.type = 1 ;
+    } else {
+      if (question.part_num == next.part_num) {
+        console.log('true nochange nedded');
+        // this.type = true ;
+      }else{
+        console.log('false need to change');
+        this.type = next.part_num ;
+        this.heading = `ID = ${question.id} and ${next.question_head}` ;
+        console.log(this.heading)
+      }
+    }
   }
 
 }
